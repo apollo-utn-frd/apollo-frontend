@@ -10,8 +10,8 @@ import {
   NavLink
 } from "reactstrap";
 
-export default class Nav extends React.Component {
-/*   constructor(props) {
+export default class ApolloNav extends React.Component {
+    constructor(props) {
     super(props);
 
     this.toggle = this.toggle.bind(this);
@@ -23,11 +23,10 @@ export default class Nav extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  } */
+  }
   render() {
     return (
       <div>
-      <h1>hola</h1>{/* 
         <Navbar className="navbar" dark expand="md" fixed="top">
           <div className="contenido">
             <NavbarBrand href="/">APOLLO</NavbarBrand>
@@ -46,7 +45,7 @@ export default class Nav extends React.Component {
                 </Nav>
             </Collapse>
           </div>
-        </Navbar> */}
+        </Navbar>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-[@bs.module "./apolloNavbar"]
+[@bs.module "./apollo-navbar"]
 external reactClass : ReasonReact.reactClass = "default";
 
 let make = children =>
