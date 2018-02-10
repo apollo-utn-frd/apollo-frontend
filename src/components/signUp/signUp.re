@@ -1,6 +1,6 @@
 open Utils;
 
-module V = Val;
+module V = Validators;
 
 module P = V.SignUpFormParams;
 
@@ -29,34 +29,17 @@ let enhancer = (creds, mapper) =>
           Js.log(values);
         }
       )
-      initialState={firstname: "", lastname: "", username: "", description: ""}
+      initialState={
+        firstname: "",
+        lastname: "",
+        /* el username deberia ser inicializado al username de google */ username: "",
+        description: ""
+      }
       schema=[
-        (
-          `firstname,
-          Custom(
-            s =>
-              V.(
-                mkVal(
-                  between(1, 20, s.lastname) && required(s.lastname),
-                  "Falta nombre"
-                )
-              )
-          )
-        ),
-        (
-          `lastname,
-          Custom(
-            s =>
-              V.(
-                mkVal(
-                  between(1, 20, s.lastname) && required(s.lastname),
-                  "Falta el apellido"
-                )
-              )
-          )
-        ),
-        (`username, Required),
-        (`description, Required)
+        (`firstname, Custom(s => s |> V.nameValidator(V.firstname))),
+        (`lastname, Custom(s => s |> V.nameValidator(V.lastname))),
+        (`username, Custom(s => s |> V.username)),
+        (`description, Custom(s => s |> V.description))
       ]>
       ...mapper
     </SignUpFormContainer>

@@ -85,7 +85,7 @@ let authorization: Models.authorization => Js.Json.t =
       ])
     );
 
-let formData: Val.SignUpFormParams.state => Js.Json.t =
+let formData: Validators.SignUpFormParams.state => Js.Json.t =
   obj =>
     Json.Encode.(
       object_([
