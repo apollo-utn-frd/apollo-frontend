@@ -1,5 +1,6 @@
 import React from "react";
 import "./apolloNavbar.css";
+import UserDropdown from "./user-dropdown/user-dropdown";
 import {
   Collapse,
   Navbar,
@@ -7,7 +8,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  InputGroup, 
+  InputGroupAddon, 
+  Input
 } from "reactstrap";
 
 export default class ApolloNav extends React.Component {
@@ -31,19 +35,16 @@ export default class ApolloNav extends React.Component {
           <div className="contenido">
             <NavbarBrand href="/">APOLLO</NavbarBrand>
             <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-                <Nav className="ml-auto" navbar>
-                <NavItem>
-                    <NavLink href="#about">Acerca de</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="#team">Nosotros</NavLink>
-                </NavItem>
-                <NavItem>
-                    <NavLink href="#contact">Contacto</NavLink>
-                </NavItem>
-                </Nav>
-            </Collapse>
+            <Collapse isOpen={this.state.isOpen} navbar></Collapse>
+          </div>
+          <div clasName="navbar-form navbar-left hidden-sm hidden-xs">
+            <InputGroup>
+              <InputGroupAddon addonType="prepend">Buscar</InputGroupAddon>
+              <Input placeholder="buscando...." />
+            </InputGroup>
+          </div>
+          <div className="collapse navbar-collapse navbar-right navbar-main-collapse">
+            <UserDropdown />
           </div>
         </Navbar>
       </div>
