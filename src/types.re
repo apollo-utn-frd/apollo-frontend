@@ -2,6 +2,7 @@ module Auth = {
   type t = Utils.authInfo;
   type action =
     | UpdateAuthInfo(t)
+    | DoNothing
     | ResetAuthInfo;
   type state =
     | AuthInfo(t)
@@ -19,9 +20,10 @@ module User = {
 module Router = {
   type state = {
     currentPage: ReasonReact.reactElement,
-    url: string
-  };
-  type action =
+    url: string,
+    currentAction: action
+  }
+  and action =
     | ShowWelcome
     | ShowHome
     | ShowSignUp(Utils.authInfo)
@@ -35,14 +37,16 @@ module Router = {
     };
   let updateRouterState = (component, action) => {
     currentPage: component,
-    url: string_of_action(action)
+    url: string_of_action(action),
+    currentAction: action
   };
 };
 
 module App = {
   type action =
     | RouterAction(Router.action)
-    | UserAction(User.action);
+    | UserAction(User.action)
+    | AuthAction(Auth.action);
   type state = {
     userState: User.state,
     routerState: Router.state,
@@ -52,12 +56,14 @@ module App = {
     userState: User.Nothing,
     routerState: {
       currentPage: <Welcome />,
-      url: Router.string_of_action(Router.ShowWelcome)
+      url: Router.string_of_action(Router.ShowWelcome),
+      currentAction: ShowWelcome
     },
     authState: Auth.NoAuthInfo
   };
   let getCurrentPage = state => state.routerState.currentPage;
   let getUrl = state => state.routerState.url;
   let getCurrentUser = state => state.userState;
+  let getCurrentAction = state => state.routerState.currentAction;
   let getUserAuthInfo = state => state.authState;
 };

@@ -21,10 +21,11 @@ let make = _children => {
     switch action {
     | RouterAction(action) => Reducer.Router.reduce(action, state)
     | UserAction(action) => Reducer.User.reduce(action, state)
-    /* TODO:
-       | AuthAction(action) => Reducer.Auth.reduce(action, state)
-       */
+    | AuthAction(action) => Reducer.Auth.reduce(action, state)
     },
-  subscriptions: self => [Reducer.Router.subscription(self)],
-  render: self => (AppT.getCurrentPage(self.state))
+  subscriptions: self => [
+    Reducer.Router.subscription(self),
+    Reducer.Auth.subscription(self)
+  ],
+  render: self => AppT.getCurrentPage(self.state)
 };
