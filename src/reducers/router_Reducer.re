@@ -15,6 +15,7 @@ let reduce = (action: R.action, state: A.state) =>
   | ShowWelcome => updateState(state, <Welcome />, ShowWelcome)
   | ShowHome => updateState(state, <Home />, ShowHome)
   | ShowViewRV => updateState(state, <ViewRV />, ShowViewRV)
+  | ShowCreateRV => updateState(state, <CreateRV />, ShowCreateRV)
   | ShowSignUp(creds) =>
     updateState(state, <SignUp credentials=creds />, ShowSignUp(creds))
   | ShowAuthPage(creds) =>
@@ -34,6 +35,7 @@ let subscription = component =>
           switch url.path {
           | ["home"] => component.send(A.RouterAction(ShowHome))
           | ["viewrv"] => component.send(A.RouterAction(ShowViewRV))
+          | ["createrv"] => component.send(A.RouterAction(ShowCreateRV))
           | ["signup"] =>
             switch (component.state |> A.getUserAuthInfo) {
             | NoAuthInfo => component.send(A.RouterAction(ShowWelcome))

@@ -14,7 +14,7 @@ export default class PreviewRV extends React.Component {
     return (
       <div className="p-2">
         <Card>
-          <CardText className="m-2">Compartida por @tuVieja</CardText>
+          <CardText className="m-2">Compartida por @juan</CardText>
           <img
             width="100%"
             src="https://res.cloudinary.com/apollo-core/image/upload/v1518474352/travels/a86e4b160a6d49e2a7997292dc03d368.png"
@@ -34,7 +34,7 @@ export default class PreviewRV extends React.Component {
             <CardText>
               Uno nunca sabe los peligros que te vas a encontrar cuando llegas a
               lo profundo del nucleo de este hermoso pero peligroso planeta al
-              que llamamos tierra. Me gustarian unas pizzas al estilo Santiago.
+              que llamamos tierra.
             </CardText>
           </CardBody>
           <CardBody>

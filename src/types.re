@@ -46,7 +46,8 @@ module Router = {
     | ShowHome
     | ShowSignUp(Utils.authInfo)
     | ShowAuthPage(Utils.authInfo)
-    | ShowViewRV;
+    | ShowViewRV
+    | ShowCreateRV;
   let string_of_action = action =>
     switch action {
     | ShowWelcome => "/"
@@ -54,6 +55,7 @@ module Router = {
     | ShowSignUp(_) => "signup"
     | ShowAuthPage(_) => "auth"
     | ShowViewRV => "viewrv"
+    | ShowCreateRV => "createrv'"
     };
   let updateRouterState = (component, action) => {
     currentPage: component,

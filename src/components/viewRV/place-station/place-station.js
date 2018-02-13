@@ -15,7 +15,7 @@ export default class ViewRV extends React.Component {
                 </div>
             </div>
         </h6>
-        <p className="m-0">Un lugar con gente de mierda</p>
+        <p className="m-0"></p>
       </div>
     );
   }

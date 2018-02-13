@@ -24,7 +24,7 @@ export default class ViewRV extends React.Component {
             <p>
               Uno nunca sabe los peligros que te vas a encontrar cuando llegas a
               lo profundo del nucleo de este hermoso pero peligroso planeta al que
-              llamamos tierra. Me gustarian unas pizzas al estilo Santiago.
+              llamamos tierra.
             </p>
             <div className="actions">
               <button className="btn btn-warning m-2" title="Mandar a favoritos">
