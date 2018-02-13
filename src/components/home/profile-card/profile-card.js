@@ -14,7 +14,7 @@ import {
 export default class UserCard extends React.Component {
   render() {
     return (
-      <div className="col-md-2 p-2">
+      <div className="col-md-2 m-2">
         <Card className="user">
           <CardImg
             width="100%"
@@ -33,9 +33,9 @@ export default class UserCard extends React.Component {
           </section>
 
           <div className="p-2">
-            <h4>@theKingInTheSouth</h4>
+            <h6 className="text-center">@theKingInTheSouth</h6>
           </div>
-          <div className="p-2">
+          <div className="text-center p-2">
             <p>
               Esto es una descripcion generica, a mi me gusta jugar con mis
               amigos imaginarios lalala

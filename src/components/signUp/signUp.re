@@ -8,6 +8,8 @@ module H = ReForm.Helpers;
 
 module SignUpFormContainer = ReForm.Create(V.SignUpFormParams);
 
+requireCSS("./signUp.css");
+
 let defaults = (defaultValue, optional) =>
   switch optional {
   | Some(value) => value
@@ -56,37 +58,44 @@ let make = (~credentials, _children) => {
     enhancer(
       credentials, ({form, handleChange, handleSubmit, getErrorForField, _}) =>
       <form
+        className="col-md-4 offset-md-4 p-4 border border-primary rounded"
         onSubmit=(
           event => {
             ReactEventRe.Synthetic.preventDefault(event);
             handleSubmit();
           }
         )>
-        <label> <span> ("Nombre:" |> str) </span> </label>
+        <h4 className="bg-primary text-white p-2"> ("Bienvenidos a Apollo" |> str) </h4>
+        <label> <span> ("Nombre de Usuario" |> str) </span> </label>
         <input
-          value=form.values.firstname
-          onChange=(H.handleDomFormChange(handleChange(`firstname)))
-        />
-        <p> (getErrorForField(`firstname) |> defaults("") |> str) </p>
-        <label> <span> ("Apellido:" |> str) </span> </label>
-        <input
-          value=form.values.lastname
-          onChange=(H.handleDomFormChange(handleChange(`lastname)))
-        />
-        <p> (getErrorForField(`lastname) |> defaults("") |> str) </p>
-        <label> <span> ("Nombre de Usuario:" |> str) </span> </label>
-        <input
+          className ="form-control"
           value=form.values.username
           onChange=(H.handleDomFormChange(handleChange(`username)))
         />
         <p> (getErrorForField(`username) |> defaults("") |> str) </p>
-        <label> <span> ("Descripcion:" |> str) </span> </label>
+        <label> <span> ("Nombre" |> str) </span> </label>
         <input
+          className ="form-control"
+          value=form.values.firstname
+          onChange=(H.handleDomFormChange(handleChange(`firstname)))
+        />
+        <p> (getErrorForField(`firstname) |> defaults("") |> str) </p>
+        <label> <span> ("Apellido" |> str) </span> </label>
+        <input
+          className ="form-control"
+          value=form.values.lastname
+          onChange=(H.handleDomFormChange(handleChange(`lastname)))
+        />
+        <p> (getErrorForField(`lastname) |> defaults("") |> str) </p>
+
+        <label> <span> ("Descripcion" |> str) </span> </label>
+        <textarea
+          className ="form-control"
           value=form.values.description
           onChange=(H.handleDomFormChange(handleChange(`description)))
         />
         <p> (getErrorForField(`description) |> defaults("") |> str) </p>
-        <button _type="submit"> ("Submit" |> str) </button>
+        <button _type="submit" className="btn"> ("Aceptar" |> str) </button>
       </form>
     )
 };
