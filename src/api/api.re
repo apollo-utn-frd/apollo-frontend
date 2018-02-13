@@ -4,12 +4,12 @@ open Utils;
 
 let baseUrl = "https://apollo-core.herokuapp.com/";
 
-let mkHeaders = authInfo =>
+let mkHeaders = auth =>
   HeadersInit.make({
+    "Access-Token": auth.auth_token,
+    "Client": auth.client_id,
     "Content-Type": "application/json",
-    "Access-Token": authInfo.auth_token,
-    "Client": authInfo.client_id,
-    "UID": authInfo.uid
+    "UID": auth.uid
   });
 
 let mkReq = (maybeCreds: option(authInfo), method, url) =>
@@ -60,9 +60,10 @@ module Users = {
       {j|$(baseUrl)users/me|j}
       |> mkReq(Some(authInfo), Get)
       |> then_(Response.json)
-      |> then_(json => Js.Json.decodeObject(json) |> resolve)
-      |> then_(opt => Option.unwrapUnsafely(opt) |> resolve)
+      |> then_(json => json |> Decode.user |> resolve)
     );
+  /* |> then_(json => Js.Json.decodeObject(json) |> resolve) */
+  /* |> then_(opt => Option.unwrapUnsafely(opt) |> resolve) */
   let updateUser = (authInfo, values) =>
     Js.Promise.(
       {j|$(baseUrl)users/me|j}

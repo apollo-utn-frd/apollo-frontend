@@ -42,7 +42,7 @@ let nameValidator = (getter, s) =>
 let username = s =>
   switch (Js.String.length(s |> getUsername)) {
   | 0 => Some("Este campo es requerido.")
-  | n when n > 4 =>
+  | n when n < 4 =>
     Some("El nombre de usuario debe contener al menos 4 caracteres")
   | n when n > 20 =>
     Some("El nombre de usuario debe contener como maximo 20 caracteres")

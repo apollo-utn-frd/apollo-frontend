@@ -1,5 +1,3 @@
-open Utils;
-
 let component = ReasonReact.statelessComponent("TeamIcon");
 
 type member = {

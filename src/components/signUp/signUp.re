@@ -16,8 +16,6 @@ let defaults = (defaultValue, optional) =>
 
 let custom = f => ReForm.Validation.Custom(f);
 
-open Reactstrap;
-
 /* A pattern we are using to ease the reading of function as children */
 let enhancer = (creds, mapper) =>
   ReForm.Validation.(
@@ -25,8 +23,13 @@ let enhancer = (creds, mapper) =>
       onSubmit=(
         /* Enviar los datos del formulario al backend */
         (values, ~setSubmitting as _, ~setError as _) => {
-          Api.Users.updateUser(creds, values) |> ignore;
-          Js.log(values);
+          Js.log(Encode.formData(values) |> Json.stringify);
+          Js.Promise.(
+            values
+            |> Api.Users.updateUser(creds)
+            |> then_(response => Js.log(response) |> resolve)
+            |> ignore
+          );
         }
       )
       initialState={
@@ -52,15 +55,19 @@ let make = (~credentials, _children) => {
   render: _self =>
     enhancer(
       credentials, ({form, handleChange, handleSubmit, getErrorForField, _}) =>
-      <form>
+      <form
+        onSubmit=(
+          event => {
+            ReactEventRe.Synthetic.preventDefault(event);
+            handleSubmit();
+          }
+        )>
         <label> <span> ("Nombre:" |> str) </span> </label>
         <input
           value=form.values.firstname
           onChange=(H.handleDomFormChange(handleChange(`firstname)))
         />
-        <Alert color="danger">
-          (getErrorForField(`firstname) |> defaults("") |> str)
-        </Alert>
+        <p> (getErrorForField(`firstname) |> defaults("") |> str) </p>
         <label> <span> ("Apellido:" |> str) </span> </label>
         <input
           value=form.values.lastname
@@ -79,16 +86,7 @@ let make = (~credentials, _children) => {
           onChange=(H.handleDomFormChange(handleChange(`description)))
         />
         <p> (getErrorForField(`description) |> defaults("") |> str) </p>
-        <button
-          _type="submit"
-          onSubmit=(
-            event => {
-              ReactEventRe.Synthetic.preventDefault(event);
-              handleSubmit();
-            }
-          )>
-          ("Submit" |> str)
-        </button>
+        <button _type="submit"> ("Submit" |> str) </button>
       </form>
     )
 };

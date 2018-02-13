@@ -7,6 +7,24 @@ module Auth = {
   type state =
     | AuthInfo(t)
     | NoAuthInfo;
+  let saveToLocalStorage = (authInfo: t) => {
+    open Dom.Storage;
+    localStorage |> setItem("uid", authInfo.uid);
+    localStorage |> setItem("auth_token", authInfo.auth_token);
+    localStorage |> setItem("client_id", authInfo.client_id);
+  };
+  let mkAuth: (string, string, string) => t =
+    (token, id, uid) => {auth_token: token, client_id: id, uid};
+  let getFromLocalStorage = (local: Dom.Storage.t) => {
+    open Dom.Storage;
+    let uid = local |> getItem("uid");
+    let auth_token = local |> getItem("auth_token");
+    let client_id = local |> getItem("client_id");
+    switch (uid, auth_token, client_id) {
+    | (Some(uid), Some(token), Some(id)) => Some(mkAuth(uid, token, id))
+    | _ => None
+    };
+  };
 };
 
 module User = {
