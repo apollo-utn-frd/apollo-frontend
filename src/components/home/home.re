@@ -5,6 +5,13 @@ let make = _children => {
   render: _self =>
     <div>
         <ApolloNavbar />
-        <ProfileCard />
+        <div className="mt-4 row">
+            <ProfileCard />
+            <div className="col-md-8 offset-md-1">
+                <PreviewRV />
+                <PreviewRV />
+                <PreviewRV />
+            </div>
+        </div>
     </div>
     };

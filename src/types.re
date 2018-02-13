@@ -27,13 +27,15 @@ module Router = {
     | ShowWelcome
     | ShowHome
     | ShowSignUp(Utils.authInfo)
-    | ShowAuthPage(Utils.authInfo);
+    | ShowAuthPage(Utils.authInfo)
+    | ShowViewRV;
   let string_of_action = action =>
     switch action {
     | ShowWelcome => "/"
     | ShowHome => "home"
     | ShowSignUp(_) => "signup"
     | ShowAuthPage(_) => "auth"
+    | ShowViewRV => "viewrv"
     };
   let updateRouterState = (component, action) => {
     currentPage: component,

@@ -1,4 +1,4 @@
-[@bs.module "./user-dropdown"]
+[@bs.module "./preview-rv"]
 external reactClass : ReasonReact.reactClass = "default";
 
 let make = children =>

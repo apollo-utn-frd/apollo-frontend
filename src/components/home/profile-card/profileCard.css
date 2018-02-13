@@ -1,0 +1,29 @@
+.pcard {
+    position: absolute;
+    width: 100%;
+    padding: 20px;
+}
+  
+.user {
+    width: 100%;
+    background-color: #fff;
+}
+  
+.info-user {
+    width: 100%;
+    padding: 25px 16px;
+}
+  
+.info-user h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+  
+.description p:last-of-type {
+    margin: 0;
+}
+  
+.seguir {
+    width: 100%;
+    padding-bottom: 20px;
+}

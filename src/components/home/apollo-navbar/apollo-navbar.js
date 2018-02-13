@@ -1,6 +1,5 @@
 import React from "react";
 import "./apolloNavbar.css";
-import UserDropdown from "./user-dropdown/user-dropdown";
 import {
   Collapse,
   Navbar,
@@ -11,7 +10,8 @@ import {
   NavLink,
   InputGroup, 
   InputGroupAddon, 
-  Input
+  Input,
+  DropdownMenu, DropdownItem, DropdownToggle, UncontrolledDropdown
 } from "reactstrap";
 
 export default class ApolloNav extends React.Component {
@@ -30,24 +30,28 @@ export default class ApolloNav extends React.Component {
   }
   render() {
     return (
-      <div>
-        <Navbar className="navbar" dark expand="md" fixed="top">
-          <div className="contenido">
-            <NavbarBrand href="/">APOLLO</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar></Collapse>
-          </div>
-          <div clasName="navbar-form navbar-left hidden-sm hidden-xs">
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">Buscar</InputGroupAddon>
-              <Input placeholder="buscando...." />
-            </InputGroup>
-          </div>
-          <div className="collapse navbar-collapse navbar-right navbar-main-collapse">
-            <UserDropdown />
-          </div>
-        </Navbar>
-      </div>
+      <div className="contenido">
+        <Navbar light expand="md">
+        <NavbarBrand href="./home">APOLLO</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="./home">Inicio</NavLink>
+            </NavItem>
+            <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>Opciones</DropdownToggle>
+                <DropdownMenu >
+                  <DropdownItem>Perfil</DropdownItem>
+                  <DropdownItem>Configuracion</DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>Salir</DropdownItem>
+                </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
     );
   }
 }
