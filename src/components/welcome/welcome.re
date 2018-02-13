@@ -22,19 +22,17 @@ let make = _children => {
       <WelcomeNavBar />
       <div id="page-top">
         <header className="intro">
-            <Container className="intro-body">
-              <Row className="w-100">
-                <div className="col-md-10 offset-md-1">
-                  <h1 className="brand-heading"> (str("Apollo")) </h1>
-                  <p className="pintro">
-                    (
-                      str({js| Comparte tu viaje con el mundo o inspírate |js})
-                    )
-                  </p>
-                  <LoginButton />
-                </div>
-              </Row>
-            </Container>
+          <Container className="intro-body">
+            <Row className="w-100">
+              <div className="col-md-10 offset-md-1">
+                <h1 className="brand-heading"> (str("Apollo")) </h1>
+                <p className="pintro">
+                  (str({js| Comparte tu viaje con el mundo o inspírate |js}))
+                </p>
+                <LoginButton />
+              </div>
+            </Row>
+          </Container>
         </header>
         <Container id="about" className="content-section text-center">
           <Row>
@@ -124,7 +122,7 @@ let make = _children => {
         </Container>
         /* Footer */
         <footer className="footer text-center">
-            <p> ({js|Copyright © Apollo Corp. 2018|js} |> str) </p>
+          <p> ({js|Copyright © Apollo Corp. 2018|js} |> str) </p>
         </footer>
       </div>
     </div>
