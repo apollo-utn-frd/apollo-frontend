@@ -11,8 +11,8 @@
     "bootstrap": "^4.0.0",
     "bs-css": "^6.0.0",
     "bs-fetch": "^0.2.1",
-    "bs-reform": "^4.2.1",
-    "bs-webapi": "^0.8.0",
+    "bs-reform": "^5.1.1",
+    "bs-webapi": "^0.9.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-form": "^2.16.1",
@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "bs-jest": "^0.3.2",
-    "reason-react": "^0.3.1"
+    "reason-react": "^0.4.1"
   }
 }

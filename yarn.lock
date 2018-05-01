@@ -1256,13 +1256,13 @@ bs-loader@^1.8.0:
     loader-utils "^1.1.0"
     read-bsconfig "^1.0.1"
 
-bs-reform@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/bs-reform/-/bs-reform-4.2.1.tgz#e7ddb29c8bc8f13cb1162b13d94039a11c6e8264"
+bs-reform@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/bs-reform/-/bs-reform-5.1.1.tgz#8b808d5d9f535fb78574ce0f18dff29a4c2d19d6"
 
-bs-webapi@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/bs-webapi/-/bs-webapi-0.8.0.tgz#6adf9733ad98d7927bbc270f6a8d4995c135701c"
+bs-webapi@^0.9.1:
+  version "0.9.1"
+  resolved "https://registry.yarnpkg.com/bs-webapi/-/bs-webapi-0.9.1.tgz#c71cc4ae619632d53c60f2f4433fb1080803cdd6"
 
 bser@1.0.2:
   version "1.0.2"
@@ -5820,9 +5820,9 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reason-react@^0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.3.1.tgz#55d5fcd07825299ce5d04f99e763bf2af1f9e0f2"
+reason-react@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/reason-react/-/reason-react-0.4.1.tgz#f1c8bf0d116be6bf43109912ee4d95e58dd7c64f"
   dependencies:
     react ">=15.0.0 || >=16.0.0"
     react-dom ">=15.0.0 || >=16.0.0"
